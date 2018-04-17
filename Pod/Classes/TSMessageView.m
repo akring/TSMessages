@@ -283,6 +283,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
         [self.titleLabel setText:title];
         [self.titleLabel setTextColor:fontColor];
         [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+        [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
         CGFloat fontSize = [[current valueForKey:@"titleFontSize"] floatValue];
         NSString *fontName = [current valueForKey:@"titleFontName"];
         if (fontName != nil) {
@@ -456,6 +457,11 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
                                        screenWidth - padding - self.textSpaceLeft - self.textSpaceRight,
                                        0.0);
     [self.titleLabel sizeToFit];
+    CGRect frame = CGRectMake(self.titleLabel.frame.origin.x,
+                              self.titleLabel.frame.origin.y,
+                              screenWidth - padding - self.textSpaceLeft - self.textSpaceRight,
+                              self.titleLabel.frame.size.height);
+    self.titleLabel.frame = frame;
 
     if ([self.subtitle length])
     {
